@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		273EA3B04C4AA252667E6FB5 /* libPods-BMKTestDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 237284D17BB9E785561B25E1 /* libPods-BMKTestDemo.a */; };
 		7E2DCD3C2265BFD40053C33A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2DCD3B2265BFD40053C33A /* AppDelegate.m */; };
 		7E2DCD3F2265BFD40053C33A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2DCD3E2265BFD40053C33A /* ViewController.m */; };
 		7E2DCD422265BFD40053C33A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E2DCD402265BFD40053C33A /* Main.storyboard */; };
@@ -35,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		237284D17BB9E785561B25E1 /* libPods-BMKTestDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BMKTestDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		485DE8F3E982B6A71704D89F /* Pods-BMKTestDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMKTestDemo.debug.xcconfig"; path = "Target Support Files/Pods-BMKTestDemo/Pods-BMKTestDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		564767DC97473A3C305F656A /* Pods-BMKTestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BMKTestDemo.release.xcconfig"; path = "Target Support Files/Pods-BMKTestDemo/Pods-BMKTestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		7E2DCD372265BFD40053C33A /* BMKTestDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BMKTestDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2DCD3A2265BFD40053C33A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7E2DCD3B2265BFD40053C33A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				273EA3B04C4AA252667E6FB5 /* libPods-BMKTestDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F4D8E9FD5FDB207CF8DA432 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				237284D17BB9E785561B25E1 /* libPods-BMKTestDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		594F69354898CFEC8B6896BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				485DE8F3E982B6A71704D89F /* Pods-BMKTestDemo.debug.xcconfig */,
+				564767DC97473A3C305F656A /* Pods-BMKTestDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7E2DCD2E2265BFD40053C33A = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +108,8 @@
 				7E2DCD522265BFD70053C33A /* BMKTestDemoTests */,
 				7E2DCD5D2265BFD70053C33A /* BMKTestDemoUITests */,
 				7E2DCD382265BFD40053C33A /* Products */,
+				594F69354898CFEC8B6896BE /* Pods */,
+				0F4D8E9FD5FDB207CF8DA432 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,9 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E2DCD632265BFD70053C33A /* Build configuration list for PBXNativeTarget "BMKTestDemo" */;
 			buildPhases = (
+				ACA04369FFA07DD4C4E5F676 /* [CP] Check Pods Manifest.lock */,
 				7E2DCD332265BFD40053C33A /* Sources */,
 				7E2DCD342265BFD40053C33A /* Frameworks */,
 				7E2DCD352265BFD40053C33A /* Resources */,
+				17C642DF9BB440A87AE1DDDF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +283,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		17C642DF9BB440A87AE1DDDF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BMKTestDemo/Pods-BMKTestDemo-resources.sh",
+				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BMKTestDemo/Pods-BMKTestDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACA04369FFA07DD4C4E5F676 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BMKTestDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7E2DCD332265BFD40053C33A /* Sources */ = {
@@ -433,6 +507,7 @@
 		};
 		7E2DCD642265BFD70053C33A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 485DE8F3E982B6A71704D89F /* Pods-BMKTestDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +525,7 @@
 		};
 		7E2DCD652265BFD70053C33A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 564767DC97473A3C305F656A /* Pods-BMKTestDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

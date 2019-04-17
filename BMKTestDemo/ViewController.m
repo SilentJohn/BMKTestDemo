@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import <BaiduMapAPI_Base/BMKBaseComponent.h>
 #import <BaiduMapAPI_Search/BMKSuggestionSearch.h>
+#import "LocationSingleton.h"
+#import <pthread.h>
 
 static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
 
@@ -17,6 +19,7 @@ static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
 @property (strong, nonatomic) BMKSuggestionSearch *search;
 @property (strong, nonatomic) BMKSuggestionSearchOption *option;
 @property (strong, nonatomic) BMKSuggestionSearchResult *result;
+@property (copy, nonatomic) NSString *cityName;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -28,6 +31,11 @@ static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    if (_cityName == nil) {
+        [LocationSingleton.sharedInstance locationOnceWithComletionBlock:^(BMKLocation * _Nullable location, NSError * _Nullable error) {
+            self->_cityName = location.rgcData.city;
+        }];
+    }
 }
 
 #pragma mark - UISearchBarDelegate
@@ -94,7 +102,7 @@ static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
 - (BMKSuggestionSearchOption *)option {
     if (_option == nil) {
         _option = [[BMKSuggestionSearchOption alloc] init];
-        _option.cityname = @"上海";
+        _option.cityname = _cityName;
     }
     return _option;
 }

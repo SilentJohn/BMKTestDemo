@@ -16,6 +16,7 @@
 		7E2DCD4A2265BFD60053C33A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2DCD492265BFD60053C33A /* main.m */; };
 		7E2DCD542265BFD70053C33A /* BMKTestDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2DCD532265BFD70053C33A /* BMKTestDemoTests.m */; };
 		7E2DCD5F2265BFD70053C33A /* BMKTestDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E2DCD5E2265BFD70053C33A /* BMKTestDemoUITests.m */; };
+		7EF6488A22670948002659FE /* LocationSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EF6488922670948002659FE /* LocationSingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		7E2DCD5A2265BFD70053C33A /* BMKTestDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BMKTestDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E2DCD5E2265BFD70053C33A /* BMKTestDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BMKTestDemoUITests.m; sourceTree = "<group>"; };
 		7E2DCD602265BFD70053C33A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7EF6488822670948002659FE /* LocationSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationSingleton.h; sourceTree = "<group>"; };
+		7EF6488922670948002659FE /* LocationSingleton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationSingleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,8 @@
 				7E2DCD452265BFD60053C33A /* LaunchScreen.storyboard */,
 				7E2DCD482265BFD60053C33A /* Info.plist */,
 				7E2DCD492265BFD60053C33A /* main.m */,
+				7EF6488822670948002659FE /* LocationSingleton.h */,
+				7EF6488922670948002659FE /* LocationSingleton.m */,
 			);
 			path = BMKTestDemo;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 			files = (
 				7E2DCD3F2265BFD40053C33A /* ViewController.m in Sources */,
 				7E2DCD4A2265BFD60053C33A /* main.m in Sources */,
+				7EF6488A22670948002659FE /* LocationSingleton.m in Sources */,
 				7E2DCD3C2265BFD40053C33A /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,10 +8,11 @@
 
 #import "AppDelegate.h"
 #import <BaiduMapAPI_Base/BMKMapManager.h>
+#import <BMKLocationKit/BMKLocationAuth.h>
 
 static NSString * const baiduSDKKey = @"gdaTr1OgG7G242GZ5EKTgKkqCMfe6rGF";
 
-@interface AppDelegate () <BMKGeneralDelegate>
+@interface AppDelegate () <BMKGeneralDelegate, BMKLocationAuthDelegate>
 
 @property (nonatomic, strong) BMKMapManager *mapManager; //主引擎类
 
@@ -22,6 +23,7 @@ static NSString * const baiduSDKKey = @"gdaTr1OgG7G242GZ5EKTgKkqCMfe6rGF";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [BMKLocationAuth.sharedInstance checkPermisionWithKey:baiduSDKKey authDelegate:self];
     //要使用百度地图，请先启动BMKMapManager
     _mapManager = [[BMKMapManager alloc] init];
     
@@ -65,12 +67,21 @@ static NSString * const baiduSDKKey = @"gdaTr1OgG7G242GZ5EKTgKkqCMfe6rGF";
  */
 - (void)onGetPermissionState:(int)iError {
     if (0 == iError) {
-        NSLog(@"授权成功");
+        NSLog(@"地图授权成功");
     } else {
-        NSLog(@"授权失败：%d", iError);
+        NSLog(@"地图授权失败：%d", iError);
     }
 }
 
+#pragma mark - BMKLocationAuthDelegate
+
+- (void)onCheckPermissionState:(BMKLocationAuthErrorCode)iError {
+    if (0 == iError) {
+        NSLog(@"定位授权成功");
+    } else {
+        NSLog(@"定位授权失败：%zd", iError);
+    }
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -96,6 +107,8 @@ static NSString * const baiduSDKKey = @"gdaTr1OgG7G242GZ5EKTgKkqCMfe6rGF";
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    // 停止引擎
+    [_mapManager stop];
 }
 
 

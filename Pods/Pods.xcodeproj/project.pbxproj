@@ -15,6 +15,7 @@
 			dependencies = (
 			);
 			name = BaiduMapKit;
+			productName = BaiduMapKit;
 		};
 /* End PBXAggregateTarget section */
 
@@ -33,7 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		21D4F71C6F2F25973822A5CA9744FA65 /* libPods-BMKTestDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-BMKTestDemo.a"; path = "libPods-BMKTestDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21D4F71C6F2F25973822A5CA9744FA65 /* libPods-BMKTestDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BMKTestDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26E92D4AE3FD40CBC336B730FF774218 /* mapapi.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = BaiduMapKit/BaiduMapAPI_Map.framework/mapapi.bundle; sourceTree = "<group>"; };
 		325DCD7824FA984512A0C3CEFBADFB61 /* BaiduMapAPI_Cloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Cloud.framework; path = BaiduMapKit/BaiduMapAPI_Cloud.framework; sourceTree = "<group>"; };
 		399EFA77343D0C2FA5D50BFAD998BB3A /* Pods-BMKTestDemo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BMKTestDemo-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -43,7 +44,7 @@
 		79F1B3E4E5E05333B1B9E29F20B1B661 /* Pods-BMKTestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BMKTestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		7ADEB42E2EA9EEF27BBCC23A9BF39274 /* Pods-BMKTestDemo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BMKTestDemo-dummy.m"; sourceTree = "<group>"; };
 		7C8D268D5DF446F4A02941123254CEC0 /* BaiduMapAPI_Search.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Search.framework; path = BaiduMapKit/BaiduMapAPI_Search.framework; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F6391E2C5332576C4238270E52D4EC0 /* BaiduMapKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BaiduMapKit.xcconfig; sourceTree = "<group>"; };
 		AE59C9ABA4A5DF65632DFBC251E19C41 /* Pods-BMKTestDemo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BMKTestDemo-resources.sh"; sourceTree = "<group>"; };
 		BD4C63DE8C555D89FBF4B2FFFDC0B6BA /* BaiduMapAPI_Utils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI_Utils.framework; path = BaiduMapKit/BaiduMapAPI_Utils.framework; sourceTree = "<group>"; };
@@ -114,7 +115,6 @@
 				E4356FE93C36B7A14B7D2537621AF61B /* Resources */,
 				C7000EDB1DFFEF2278C6D97A1974CFBB /* Support Files */,
 			);
-			name = BaiduMapKit;
 			path = BaiduMapKit;
 			sourceTree = "<group>";
 		};
@@ -206,6 +206,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -246,7 +247,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -408,7 +409,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

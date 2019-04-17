@@ -97,7 +97,6 @@
 				485DE8F3E982B6A71704D89F /* Pods-BMKTestDemo.debug.xcconfig */,
 				564767DC97473A3C305F656A /* Pods-BMKTestDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

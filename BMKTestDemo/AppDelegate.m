@@ -7,8 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import <BaiduMapAPI_Base/BMKMapManager.h>
 
-@interface AppDelegate ()
+static NSString * const baiduSDKKey = @"gdaTr1OgG7G242GZ5EKTgKkqCMfe6rGF";
+
+@interface AppDelegate () <BMKGeneralDelegate>
+
+@property (nonatomic, strong) BMKMapManager *mapManager; //主引擎类
 
 @end
 
@@ -17,7 +22,53 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //要使用百度地图，请先启动BMKMapManager
+    _mapManager = [[BMKMapManager alloc] init];
+    
+    /**
+     百度地图SDK所有API均支持百度坐标（BD09）和国测局坐标（GCJ02），用此方法设置您使用的坐标类型.
+     默认是BD09（BMK_COORDTYPE_BD09LL）坐标.
+     如果需要使用GCJ02坐标，需要设置CoordinateType为：BMK_COORDTYPE_COMMON.
+     */
+    if ([BMKMapManager setCoordinateTypeUsedInBaiduMapSDK:BMK_COORDTYPE_BD09LL]) {
+        NSLog(@"经纬度类型设置成功");
+    } else {
+        NSLog(@"经纬度类型设置失败");
+    }
+    
+    //启动引擎并设置AK并设置delegate
+    BOOL result = [_mapManager start:baiduSDKKey generalDelegate:self];
+    if (!result) {
+        NSLog(@"启动引擎失败");
+    }
     return YES;
+}
+
+#pragma mark - BMKGeneralDelegate
+/**
+ 联网结果回调
+ 
+ @param iError 联网结果错误码信息，0代表联网成功
+ */
+- (void)onGetNetworkState:(int)iError {
+    if (0 == iError) {
+        NSLog(@"联网成功");
+    } else {
+        NSLog(@"联网失败：%d", iError);
+    }
+}
+
+/**
+ 鉴权结果回调
+ 
+ @param iError 鉴权结果错误码信息，0代表鉴权成功
+ */
+- (void)onGetPermissionState:(int)iError {
+    if (0 == iError) {
+        NSLog(@"授权成功");
+    } else {
+        NSLog(@"授权失败：%d", iError);
+    }
 }
 
 

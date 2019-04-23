@@ -14,14 +14,15 @@
 
 static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
 
-@interface ViewController () <BMKSuggestionSearchDelegate, UISearchBarDelegate, UITableViewDataSource>
+@interface ViewController () <BMKSuggestionSearchDelegate, UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) BMKSuggestionSearch *search;
 @property (strong, nonatomic) BMKSuggestionSearchOption *option;
 @property (strong, nonatomic) BMKSuggestionSearchResult *result;
-@property (copy, nonatomic) NSString *cityName;
+@property (copy, nonatomic) BMKLocation *location;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 
 @end
@@ -30,10 +31,15 @@ static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.searchBar becomeFirstResponder];
     // Do any additional setup after loading the view.
-    if (_cityName == nil) {
+    if (_location == nil) {
         [LocationSingleton.sharedInstance locationOnceWithComletionBlock:^(BMKLocation * _Nullable location, NSError * _Nullable error) {
-            self->_cityName = location.rgcData.city;
+            if (error) {
+                NSLog(@"%@", error);
+                return;
+            }
+            self->_location = location;
         }];
     }
 }
@@ -65,8 +71,27 @@ static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:resultCellIdentifier forIndexPath:indexPath];
     BMKSuggestionInfo *info = self.result.suggestionList[indexPath.row];
     cell.textLabel.text = info.key;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@%@", info.city, info.district];
+    NSMutableString *detail = [NSMutableString stringWithFormat:@"%@%@", info.city, info.district];
+    if ([info.city isEqualToString:self.location.rgcData.city]) {
+        CLLocation *infoLocation = [[CLLocation alloc] initWithLatitude:info.location.latitude longitude:info.location.longitude];
+        [detail appendFormat:@" %.2lfkm", [infoLocation distanceFromLocation:self.location.location] / 1000];
+    }
+    cell.detailTextLabel.text = detail;
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BMKSuggestionInfo *info = self.result.suggestionList[indexPath.row];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:info.key message:[NSString stringWithFormat:@"(%lf, %lf)", info.location.latitude, info.location.longitude] preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:^{
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }];
 }
 
 #pragma mark - BMKSuggestionSearchDelegate
@@ -80,9 +105,6 @@ static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
     if (error == BMK_SEARCH_NO_ERROR) {
         //在此处理正常结果
         self.result = result;
-        for (BMKSuggestionInfo *info in result.suggestionList) {
-            NSLog(@"\n%@\n%@\n%@", info.key, info.city, info.district);
-        }
     }
     else {
         NSLog(@"检索失败");
@@ -102,7 +124,7 @@ static NSString * const resultCellIdentifier = @"ResultCellIdentifier";
 - (BMKSuggestionSearchOption *)option {
     if (_option == nil) {
         _option = [[BMKSuggestionSearchOption alloc] init];
-        _option.cityname = _cityName;
+        _option.cityname = _location.rgcData.city;
     }
     return _option;
 }
